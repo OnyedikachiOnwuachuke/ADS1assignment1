@@ -4,13 +4,15 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Reading the data into a DataFrame
+
 data_eu = pd.read_csv('GDP_per_capita.csv', index_col=0)
-print(data_eu)
 
 # Creating a variable as the list of years as strings
+
 data_year = ['2017', '2018', '2019', '2020', '2021']
 
 # Defining a function that creates a line plot with one line for each country.
+
 
 def plot_line_gdp_per_capita(data_eu, x_country, y_countries, plot_title, x_label, y_label, legend_loc='best'):
     """
@@ -34,15 +36,17 @@ def plot_line_gdp_per_capita(data_eu, x_country, y_countries, plot_title, x_labe
     plt.xlabel(x_label)
     plt.ylabel(y_label)
     plt.legend(loc=legend_loc)
+
+# Saving the line plot image as a png file format
     plt.savefig('line plot.png')
     plt.show()
-
 
 plot_line_gdp_per_capita(data_eu, 'year', list(data_eu.columns),
                          'GDP Per Capita of Six(6) European Countries (2017-2021)',
                          'Year', 'GDP per capita(in US dollars)')
 
 # Defining the function plot_bar_gdp_per_capita is to create a bar chart for the countries for a particular year in the dataset
+
 
 def plot_bar_gdp_per_capita(data_eu, year):
     """Create a bar chart showing the GDP of each country in a specific year.
@@ -54,21 +58,24 @@ def plot_bar_gdp_per_capita(data_eu, year):
     Returns:
         None.
     """
-# Selecting the columns and assigning the values to the corresponding year 
+# Selecting the columns and assigning the values to the corresponding year
+
     gdp_eu = data_eu.loc[year]
-    
+
     plt.bar(gdp_eu.index, gdp_eu.values)
     plt.title(f'GDP per capita of six(6) European Countries ({year})')
     plt.xlabel('Country')
     plt.ylabel('GDP per capita (in US dollars)')
+
+# Saving the bar plot image as a png file format
+
     plt.savefig('GDP per capita for year 2020.png')
     plt.show()
 
-
 plot_bar_gdp_per_capita(data_eu, 2020)
 
-
 # The below function plot_scatter_gdp_per_capita is used to compare the GDP per capita of any two countries in the dataset
+
 
 def plot_scatter_gdp_per_capita(data_eu, country1, country2):
     """Create a scatter plot showing the GDP of two countries over time.
@@ -85,9 +92,10 @@ def plot_scatter_gdp_per_capita(data_eu, country1, country2):
     plt.title(f'GDP per capita($) of {country1} vs {country2} (2017-2021)')
     plt.xlabel(country1)
     plt.ylabel(country2)
+
+# Saving the scatter plot image as a png file format
+
     plt.savefig('scatter plot of Belgium vs Germany.png')
-
     plt.show()
-
 
 plot_scatter_gdp_per_capita(data_eu, 'Belgium', 'Germany')
